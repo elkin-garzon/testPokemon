@@ -1,6 +1,14 @@
 export class Pokemon {
-    public name: String;
-    public image: String;
-    public attack: Number;
-    public defense: Number;
+    public id?: number;
+    public name: string;
+    public image: string;
+    public attack: number;
+    public defense: number;
+
+    public status?: string;
+
+    static clone(data: Pokemon) {
+        delete data.status;
+        return data;
+    }
 }

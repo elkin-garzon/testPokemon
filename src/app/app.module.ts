@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormPokemonComponent } from './form-pokemon/form-pokemon.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormPokemonComponent } from './form-pokemon/form-pokemon.component';
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

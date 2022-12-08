@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="col_9 alignBtn">
-            <button class="btn new" (click)="receiveClose(true)">
+            <button class="btn new" (click)="newPokemon()">
                 <fa-icon [icon]="faPlus"></fa-icon>
                 Nuevo
             </button>
@@ -32,18 +32,23 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tr *ngFor="let row of rows">
+                    <td>{{row.name}}</td>
+                    <td>
+                        <img [src]="row.image" [alt]="row.name">
+                    </td>
+                    <td>{{row.attack}}</td>
+                    <td>{{row.defense}}</td>
+                    <td class="accionsTable">
+                        <fa-icon [icon]="faPen" (click)="edithRow(row)"></fa-icon>
+                        <fa-icon [icon]="faTrashCan" (click)="deleteRow(row)"></fa-icon>
+                    </td>
                 </tr>
             </tbody>
         </table>        
     </section>
     <br>
     <section class="row border" *ngIf="activeForm">
-        <app-form-pokemon (closeEvent)="receiveClose($event)"></app-form-pokemon>
+        <app-form-pokemon  [row]="rowSelected" (closeEvent)="receiveClose($event)" (sendEvent)="receiveData($event)"></app-form-pokemon>
     </section>
 </div>

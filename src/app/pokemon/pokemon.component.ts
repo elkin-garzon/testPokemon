@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { faPlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMagnifyingGlass, faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { Pokemon } from '../models/pokemon';
+import { PokemonService } from '../services/pokemon.service';
 
 @Component({
 	selector: 'app-pokemon',
@@ -8,14 +10,20 @@ import { faPlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 	styleUrls: ['./pokemon.component.scss']
 })
 export class PokemonComponent implements OnInit {
-
-	public formSearch!: FormGroup;
-	public activeForm:Boolean = true;
 	public faPlus = faPlus;
 	public faMagnifyingGlass = faMagnifyingGlass;
+	public faPen = faPen;
+	public faTrashCan = faTrashCan;
+
+	public formSearch!: FormGroup;
+	public activeForm: Boolean = false;
+	public rows: Array<Pokemon> = [];
+	public rowSelected: Pokemon = new Pokemon();
+
 
 	constructor(
 		public formBuilder: FormBuilder,
+		public service: PokemonService
 	) { }
 
 	ngOnInit(): void {
@@ -24,11 +32,53 @@ export class PokemonComponent implements OnInit {
 		});
 
 		this.formSearch.valueChanges.subscribe(() => {
-			console.log('--->', this.formSearch.valid)
+
+		});
+
+		this.rows.push({
+			id: 1,
+			name: 'pikachu',
+			image: 'https://www.primecomics.com.co/images/feature_variant/3/pikachu.jpg',
+			attack: 50,
+			defense: 50
+		});
+		//this.listData();
+	}
+
+	/*listData() {
+		this.service.getData().subscribe((resp: Array<any>) => {
+			
+		})
+	}*/
+
+	newPokemon() {
+		this.rowSelected = new Pokemon();
+		this.rowSelected.status = 'N';
+		this.activeForm = true;
+	}
+
+	receiveClose(close: Boolean) {
+		this.rowSelected = new Pokemon();
+		this.rowSelected.status = 'N';
+		this.activeForm = close;
+	}
+
+	edithRow(row: Pokemon) {
+		this.rowSelected = row;
+		this.rowSelected.status = 'E';
+		this.activeForm = true;
+	}
+
+	receiveData(row: Pokemon) {
+		this.activeForm = false;
+		this.service.onSave(row).subscribe((resp: any) => {
+			
 		})
 	}
 
-	receiveClose(close:Boolean){
-		this.activeForm = close;
+	deleteRow(row: Pokemon) {
+		this.service.deleteData(row).subscribe((resp: any) => {
+			
+		})
 	}
 }
