@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faSave, faClose } from '@fortawesome/free-solid-svg-icons';
-import { Pokemon } from './pokemon';
+import { Pokemon } from '../models/pokemon';
 
 @Component({
 	selector: 'app-form-pokemon',
