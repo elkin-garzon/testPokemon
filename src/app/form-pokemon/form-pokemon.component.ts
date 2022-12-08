@@ -31,8 +31,9 @@ export class FormPokemonComponent implements OnInit {
 		});
 	}
 
-	save(){
-		console.log(this.form.value)
+	save() {
+		if (this.form.valid) {
+		}
 	}
 
 	sendClose() {

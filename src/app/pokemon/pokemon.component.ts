@@ -20,11 +20,11 @@ export class PokemonComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.formSearch = this.formBuilder.group({
-			seach: ['', [Validators.required, Validators.minLength(4)]]
+			search: ['', [Validators.required, Validators.minLength(4)]]
 		});
 
 		this.formSearch.valueChanges.subscribe(() => {
-			console.log(this.formSearch.valid)
+			console.log('--->', this.formSearch.valid)
 		})
 	}
 
