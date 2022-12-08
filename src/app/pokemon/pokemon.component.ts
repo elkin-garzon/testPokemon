@@ -42,14 +42,14 @@ export class PokemonComponent implements OnInit {
 			attack: 50,
 			defense: 50
 		});
-		//this.listData();
+		this.listData();
 	}
 
-	/*listData() {
+	listData() {
 		this.service.getData().subscribe((resp: Array<any>) => {
 			
 		})
-	}*/
+	}
 
 	newPokemon() {
 		this.rowSelected = new Pokemon();
