@@ -1,14 +1,100 @@
 /* You can add global styles to this file, and also import other style files */
-*{
+* {
     font-family: Arial, Helvetica, sans-serif;
 }
+
 /* ========== ResetCSS ========== */
-*,html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,tr,select,input{appearance:inherit; -moz-appearance:inherit; -webkit-appearance:inherit; background:transparent; border:none; border-radius:0; margin:0; outline:0; padding:0; text-decoration:none;}
-html { background: transparent; }
+*,
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+tr,
+select,
+input {
+    appearance: inherit;
+    -moz-appearance: inherit;
+    -webkit-appearance: inherit;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+html {
+    background: transparent;
+}
 
 /* ========== GRID ========== */
-.row {position:relative;}
-.row::after {clear:both; content:''; display:block;}
+.row {
+    position: relative;
+}
+
+.row::after {
+    clear: both;
+    content: '';
+    display: block;
+}
 
 .col_1,
 .col_2,
@@ -21,34 +107,134 @@ html { background: transparent; }
 .col_9,
 .col_10,
 .col_11,
-.col_12 {box-sizing:border-box; float:left; padding:5px;}
-
-.col_1 {width:8.33%;}
-.col_2 {width:30.66%;}
-.col_3 {width:25%;}
-.col_4 {width:33.33%;}
-.col_5 {width:41.66%;}
-.col_6 {width:50%;}
-.col_7 {width:58.33%;}
-.col_8 {width:66.66%;}
-.col_9 {width:75%;}
-.col_10 {width:83.33%;}
-.col_11 {width:91.66%;}
-.col_12 {width:100%;}
-
-
-.content{
-    width: 90%;
-    margin: 0 auto;
+.col_12 {
+    box-sizing: border-box;
+    float: left;
+    padding: 5px;
 }
-.border{
+
+.col_1 {
+    width: 8.33%;
+}
+
+.col_2 {
+    width: 30.66%;
+}
+
+.col_3 {
+    width: 25%;
+}
+
+.col_4 {
+    width: 33.33%;
+}
+
+.col_5 {
+    width: 41.66%;
+}
+
+.col_6 {
+    width: 50%;
+}
+
+.col_7 {
+    width: 58.33%;
+}
+
+.col_8 {
+    width: 66.66%;
+}
+
+.col_9 {
+    width: 75%;
+}
+
+.col_10 {
+    width: 83.33%;
+}
+
+.col_11 {
+    width: 91.66%;
+}
+
+.col_12 {
+    width: 100%;
+}
+
+
+.content {
+    width: 90%;
+    margin: 20px auto;
+
+    h1 {
+        font-size: 16px;
+    }
+}
+
+.border {
     border: 1px solid #cbccd0
 }
-.btn{
+
+form {
+    input {
+        border: 1px solid #cbccd0;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 3px;
+    }
+
+    label {
+        padding: 5px 0 5px 0;
+        width: 100px !important;
+        margin: 0 10px 0 0;
+    }
+
+    input[type="range"] {
+        -webkit-appearance: none;
+        margin-right: 15px;
+        width: 200px;
+        height: 7px;
+        background: #cbccd0;
+        border-radius: 3px;
+        border: none;
+        background-image: linear-gradient(#6459ef, #6459ef);
+        background-size: 50% 100%;
+        background-repeat: no-repeat;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background: #6459ef;
+        cursor: pointer;
+        transition: background .3s ease-in-out;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+        -webkit-appearance: none;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+    }
+}
+
+.btn {
     background: #6459ef;
     color: #ffffff;
-    padding: 5px 10px;
+    padding: 10px;
     font-weight: bold;
     border-radius: 3px;
     cursor: pointer;
+    font-size: 14px;
+
+    &[disabled] {
+        background: #d0cbff;
+    }
+}
+
+.center {
+    text-align: center;
+    color: #cbccd0;
 }

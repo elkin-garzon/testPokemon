@@ -1,0 +1,30 @@
+<div class="row content">
+    <h1> Nuevo Pokemon</h1>
+    <form [formGroup]="form" class="row">
+        <div class="col_6 flex">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" formControlName="name" autocomplete="off">
+        </div>
+        <div class="col_6 flex">
+            <label for="ataque">Ataque</label>
+            <input type="range" name="ataque" id="ataque" formControlName="attack" value="10" min="0" max="100" [ngStyle]="{'background-size': form.value.attack+'%'}" >
+        </div>
+        <div class="col_6 flex">
+            <label for="imagen">Imagen</label>
+            <input type="text" name="imagen" id="imagen" formControlName="image" autocomplete="off">
+        </div>
+        <div class="col_6 flex">
+            <label for="defensa">Defensa</label>
+            <input type="range" name="defensa" id="defensa" formControlName="defense" min="0" max="100" [value]="form.value.defense" [ngStyle]="{'background-size': form.value.defense+'%'}" >
+        </div>
+    </form>
+    <br>
+    <div class="center btn_form">
+        <button class="btn" [disabled]="!form.valid" (click)="save()">
+            <fa-icon [icon]="faSave"></fa-icon> Guardar
+        </button>
+        <button class="btn" (click)="sendClose()">
+            <fa-icon [icon]="faClose"></fa-icon> Cancelar
+        </button>
+    </div>
+</div>

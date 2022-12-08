@@ -1,38 +1,49 @@
 <div class="content">
-    <h1>
-        listado de pokemon
-    </h1>
+    <h1>listado de pokemon</h1>
+    <br>
     <form [formGroup]="formSearch" class="row">
         <div class="col_3">
             <div class="row border">
-                <div class="col_3"></div>
+                <div class="col_3 center">
+                    <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+                </div>
                 <div class="col_9">
-                    <input type="text"  formControlName="seach">
+                    <input type="text" placeholder="Buscar" formControlName="seach" class="no_border">
                 </div>
             </div>
         </div>
         <div class="col_9 alignBtn">
-            <button class="btn new">Nuevo</button>
+            <button class="btn new" (click)="receiveClose(true)">
+                <fa-icon [icon]="faPlus"></fa-icon>
+                Nuevo
+            </button>
         </div>
     </form>
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Imagen</th>
-                <th>Ataque</th>
-                <th>Defensa</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>sdfsd</td>
-                <td>sdf</td>
-                <td>sdf</td>
-                <td>sdf</td>
-                <td>sdf</td>
-            </tr>
-        </tbody>
-    </table>    
+    <br>
+    <section class="row">
+        <table class="col_12">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Imagen</th>
+                    <th>Ataque</th>
+                    <th>Defensa</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>        
+    </section>
+    <br>
+    <section class="row border" *ngIf="activeForm">
+        <app-form-pokemon (closeEvent)="receiveClose($event)"></app-form-pokemon>
+    </section>
 </div>
