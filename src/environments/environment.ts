@@ -1,4 +1,4 @@
 export const environment = {
 	production: false,
-    urlPokemon:'https://bp-pokemons.herokuapp.com'
+    urlPokemon:'https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net/pkm-msa-evaluation/pokemon'
 };

@@ -10,6 +10,7 @@ import { PokemonService } from '../services/pokemon.service';
 	styleUrls: ['./pokemon.component.scss']
 })
 export class PokemonComponent implements OnInit {
+
 	public faPlus = faPlus;
 	public faMagnifyingGlass = faMagnifyingGlass;
 	public faPen = faPen;
@@ -28,26 +29,32 @@ export class PokemonComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.formSearch = this.formBuilder.group({
-			search: ['', [Validators.required, Validators.minLength(4)]]
-		});
-
-		this.formSearch.valueChanges.subscribe(() => {
-
-		});
-
-		this.rows.push({
-			id: 1,
-			name: 'pikachu',
-			image: 'https://www.primecomics.com.co/images/feature_variant/3/pikachu.jpg',
-			attack: 50,
-			defense: 50
+			search: ['', [Validators.required, Validators.minLength(3)]]
 		});
 		this.listData();
+		this.formSearch.get('search')?.valueChanges.subscribe((resp) => {
+			if (resp.length >= 3) {
+				let rowsFilter = this.rows.map((ele: any) => {
+					if (ele.name.includes(resp)) {
+						return ele
+					} else {
+						return ''
+					}
+				});
+				if(rowsFilter.filter(fil => fil.name).length > 0){
+					this.rows = rowsFilter.filter(fil => fil.name)
+				}else{
+					this.listData();
+				}				
+			} else {
+				this.listData();
+			}
+		});
 	}
 
 	listData() {
 		this.service.getData().subscribe((resp: Array<any>) => {
-			
+			this.rows = resp;
 		})
 	}
 
@@ -64,21 +71,30 @@ export class PokemonComponent implements OnInit {
 	}
 
 	edithRow(row: Pokemon) {
-		this.rowSelected = row;
-		this.rowSelected.status = 'E';
-		this.activeForm = true;
+		if (this.activeForm) {
+			this.activeForm = false;
+			setTimeout(() => {
+				this.rowSelected = row;
+				this.rowSelected.status = 'E';
+				this.activeForm = true;
+			}, 1);
+		} else {
+			this.rowSelected = row;
+			this.rowSelected.status = 'E';
+			this.activeForm = true;
+		}
 	}
 
 	receiveData(row: Pokemon) {
 		this.activeForm = false;
-		this.service.onSave(row).subscribe((resp: any) => {
-			
+		this.service.onSave(row).subscribe(() => {
+			this.listData();
 		})
 	}
 
 	deleteRow(row: Pokemon) {
 		this.service.deleteData(row).subscribe((resp: any) => {
-			
+			this.listData();
 		})
 	}
 }

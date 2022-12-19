@@ -7,15 +7,24 @@
         </div>
         <div class="col_6 flex">
             <label for="ataque">Ataque</label>
-            <input type="range" name="ataque" id="ataque" formControlName="attack" value="10" min="0" max="100" [ngStyle]="{'background-size': form.value.attack+'%'}" >
+            <div class="flex flex_center">
+                <span>0</span>
+                <input type="range" name="ataque" id="ataque" formControlName="attack" value="10" min="0" max="100" [ngStyle]="{'background-size': form.value.attack+'%'}" >
+                <span>100</span>
+            </div>
+            
         </div>
         <div class="col_6 flex">
             <label for="imagen">Imagen</label>
             <input type="text" name="imagen" id="imagen" formControlName="image" autocomplete="off">
         </div>
-        <div class="col_6 flex">
+        <div class="col_6 flex flex_center">
             <label for="defensa">Defensa</label>
-            <input type="range" name="defensa" id="defensa" formControlName="defense" min="0" max="100" [value]="form.value.defense" [ngStyle]="{'background-size': form.value.defense+'%'}" >
+            <div class="flex flex_center">
+                <span>0</span>
+                <input type="range" name="defensa" id="defensa" formControlName="defense" min="0" max="100" [value]="form.value.defense" [ngStyle]="{'background-size': form.value.defense+'%'}" >
+                <span>100</span>
+            </div>
         </div>
     </form>
     <br>

@@ -22,13 +22,15 @@ export class FormPokemonComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void {
-		console.log(11111)
 		this.form = this.formBuilder.group({
 			id: [this.row.id],
 			name: [this.row.name, [Validators.required, Validators.minLength(4)]],
 			image: [this.row.image, [Validators.required, Validators.minLength(4)]],
 			attack: [this.row.attack, [Validators.required, Validators.min(0)]],
 			defense: [this.row.defense, [Validators.required, Validators.min(0)]],
+			hp: [this.row.hp],
+			type: [this.row.type],
+			idAuthor: [this.row.idAuthor],
 			status: [this.row.status, [Validators.required, Validators.minLength(1)]]
 		});
 	}

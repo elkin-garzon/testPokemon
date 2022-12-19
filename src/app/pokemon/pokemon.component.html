@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="col_9 alignBtn">
-            <button class="btn new" (click)="newPokemon()">
+            <button class="btn new" (click)="newPokemon()" *ngIf="!activeForm">
                 <fa-icon [icon]="faPlus"></fa-icon>
                 Nuevo
             </button>

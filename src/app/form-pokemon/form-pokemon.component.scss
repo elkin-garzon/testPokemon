@@ -4,6 +4,13 @@ h1{
 .flex{
     display: flex;
 }
+.flex_center{
+    align-items: center;
+    span{
+        min-width: 30px;
+        display: block;
+    }
+}
 .btn_form{
     button{
         margin: 0 10px ;
