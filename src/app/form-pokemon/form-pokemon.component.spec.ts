@@ -36,16 +36,6 @@ describe('FormPokemonComponent', () => {
 		expect(component).toBeTruthy();
 	});
 
-	/*it('set data @input', () => {
-		fixture = TestBed.createComponent(FormPokemonComponent);
-		component = fixture.componentInstance;
-		component.row = row;
-		fixture.detectChanges();
-
-		
-	});*/
-
-
 	it('save button form valid', () => {
 		fixture = TestBed.createComponent(FormPokemonComponent);
 		component = fixture.componentInstance;
@@ -69,13 +59,11 @@ describe('FormPokemonComponent', () => {
 		expect(component.form.valid).toEqual(true);
 	});
 
-
-
 	it('save button sendClose', () => {
 		fixture = TestBed.createComponent(FormPokemonComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
-
 		component.sendClose();
+		expect(component).toBeTruthy();
 	});
 });

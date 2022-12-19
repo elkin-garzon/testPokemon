@@ -53,7 +53,7 @@ export class PokemonComponent implements OnInit {
 	}
 
 	listData() {
-		this.service.getData().subscribe((resp: Array<any>) => {
+		this.service.getData().subscribe((resp: Array<Pokemon>) => {
 			this.rows = resp;
 		})
 	}
